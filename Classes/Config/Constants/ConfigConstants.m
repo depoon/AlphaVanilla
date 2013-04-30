@@ -1,0 +1,26 @@
+//
+//  ConfigConstants.m
+//  Freestyle
+//
+//  Created by Kenneth on 15/3/13.
+//  Copyright (c) 2013 __MyCompanyName__. All rights reserved.
+//
+
+#import "ConfigConstants.h"
+
+
+NSString* const CONFIG_KEY_APPLICATION = @"APPLICATION";
+NSString* const CONFIG_KEY_APPLICATION_UI = @"APPLICATION_UI";
+NSString* const CONFIG_KEY_APPLICATION_UI_BACKGROUND = @"APPLICATION_UI_BACKGROUND";
+NSString* const CONFIG_KEY_APPLICATION_UI_BACKGROUND_FILE = @"APPLICATION_UI_BACKGROUND_FILE";
+
+NSString* const CONFIG_KEY_SIDEMENU = @"SIDEMENU";
+NSString* const CONFIG_KEY_SIDEMENU_ENABLED = @"SIDEMENU_ENABLED";
+NSString* const CONFIG_KEY_SIDEMENU_MENU = @"SIDEMENU_MENU";
+NSString* const CONFIG_KEY_SIDEMENU_MENU_NAME = @"SIDEMENU_MENU_NAME";
+NSString* const CONFIG_KEY_SIDEMENU_MENU_IMAGE = @"SIDEMENU_MENU_IMAGE";
+NSString* const CONFIG_KEY_SIDEMENU_MENU_SELECTOR = @"SIDEMENU_MENU_SELECTOR";
+
+@implementation ConfigConstants
+
+@end

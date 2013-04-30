@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<model name="" userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="2061" systemVersion="11G63" minimumToolsVersion="Xcode 4.3" macOSVersion="Automatic" iOSVersion="Automatic">
+    <entity name="BusDirectionCoreData" representedClassName="BusDirectionCoreData" syncable="YES">
+        <attribute name="busDirection" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
+        <relationship name="busNumber" optional="YES" minCount="1" maxCount="1" deletionRule="Nullify" destinationEntity="BusNumberCoreData" inverseName="busDirection" inverseEntity="BusNumberCoreData" syncable="YES"/>
+        <relationship name="busRoute" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="BusRouteCoreData" inverseName="busDirection" inverseEntity="BusRouteCoreData" syncable="YES"/>
+    </entity>
+    <entity name="BusNumberCoreData" representedClassName="BusNumberCoreData" syncable="YES">
+        <attribute name="busNumber" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="busDirection" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="BusDirectionCoreData" inverseName="busNumber" inverseEntity="BusDirectionCoreData" syncable="YES"/>
+    </entity>
+    <entity name="BusRouteCoreData" representedClassName="BusRouteCoreData" syncable="YES">
+        <attribute name="index" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
+        <relationship name="busDirection" optional="YES" minCount="1" maxCount="1" deletionRule="Nullify" destinationEntity="BusDirectionCoreData" inverseName="busRoute" inverseEntity="BusDirectionCoreData" syncable="YES"/>
+        <relationship name="busStop" optional="YES" minCount="1" maxCount="1" deletionRule="Nullify" destinationEntity="BusStopCoreData" inverseName="busRoute" inverseEntity="BusStopCoreData" syncable="YES"/>
+    </entity>
+    <entity name="BusStopCoreData" representedClassName="BusStopCoreData" syncable="YES">
+        <attribute name="busStopName" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="busStopNumber" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="latitude" optional="YES" attributeType="Float" defaultValueString="0.0" syncable="YES"/>
+        <attribute name="longitude" optional="YES" attributeType="Float" defaultValueString="0.0" syncable="YES"/>
+        <relationship name="busRoute" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="BusRouteCoreData" inverseName="busStop" inverseEntity="BusRouteCoreData" syncable="YES"/>
+        <relationship name="shortListingBusStop" optional="YES" minCount="1" maxCount="1" deletionRule="Nullify" destinationEntity="ShortListedBusStopCoreData" inverseName="busStop" inverseEntity="ShortListedBusStopCoreData" syncable="YES"/>
+    </entity>
+    <entity name="ShortListedBusStopCoreData" representedClassName="ShortListedBusStopCoreData" syncable="YES">
+        <attribute name="rank" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
+        <relationship name="busStop" optional="YES" minCount="1" maxCount="1" deletionRule="Nullify" destinationEntity="BusStopCoreData" inverseName="shortListingBusStop" inverseEntity="BusStopCoreData" syncable="YES"/>
+    </entity>
+    <elements>
+        <element name="BusDirectionCoreData" positionX="54" positionY="189" width="128" height="90"/>
+        <element name="BusNumberCoreData" positionX="-63" positionY="291" width="128" height="75"/>
+        <element name="BusRouteCoreData" positionX="-189" positionY="-9" width="128" height="90"/>
+        <element name="BusStopCoreData" positionX="169" positionY="18" width="128" height="135"/>
+        <element name="ShortListedBusStopCoreData" positionX="169" positionY="294" width="128" height="75"/>
+    </elements>
+</model>

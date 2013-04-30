@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>APPLICATION</key>
+	<dict>
+		<key>APPLICATION_UI</key>
+		<dict>
+			<key>APPLICATION_UI_BACKGROUND</key>
+			<dict>
+				<key>APPLICATION_UI_BACKGROUND_FILE</key>
+				<string>HomeScreenBackground.png</string>
+			</dict>
+		</dict>
+	</dict>
+	<key>SIDEMENU</key>
+	<dict>
+		<key>SIDEMENU_ENABLED</key>
+		<string>YES</string>
+		<key>SIDEMENU_UI</key>
+		<string></string>
+		<key>SIDEMENU_MENU</key>
+		<array>
+			<dict>
+				<key>SIDEMENU_MENU_NAME</key>
+				<string>Singapore Buses</string>
+				<key>SIDEMENU_MENU_IMAGE</key>
+				<string>SgBuses</string>
+				<key>SIDEMENU_MENU_SELECTOR</key>
+				<string>showSgBuses</string>
+			</dict>
+		</array>
+	</dict>
+</dict>
+</plist>
