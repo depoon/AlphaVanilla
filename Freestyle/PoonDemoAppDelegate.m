@@ -99,6 +99,7 @@ NSString* const CONFIG_FILE           = @"Config.plist";
     BOOL shouldResetupCoreData = [sgBusesCoreDataSetup shouldResetupCoreData];
     if (shouldResetupCoreData){
         SgBusesCoreDataSetupViewController* sgBusesCoreDataSetupViewController = [[SgBusesCoreDataSetupViewController alloc]init];
+        [sgBusesCoreDataSetupViewController setIsLaunchedDuringStartup:YES];
         [self.window setRootViewController:sgBusesCoreDataSetupViewController];
         sgBusesCoreDataSetup.sgBusesCoreDataUpdateUIActionDelegate = sgBusesCoreDataSetupViewController;
         [sgBusesCoreDataSetupViewController release];

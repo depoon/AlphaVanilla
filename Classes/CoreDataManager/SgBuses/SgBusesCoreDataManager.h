@@ -39,5 +39,6 @@
 
 -(NSError*) removeShortListedBusStop: (ShortListedBusStopCoreData*) shortListedBusStopCoreData;
 
+-(void) deleteAllDataViaCascade;
 
 @end

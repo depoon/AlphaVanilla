@@ -13,6 +13,7 @@
 
 -(void) setupCoreData;
 -(BOOL) shouldResetupCoreData;
+-(void) deleteAllBusData;
 
 @property (nonatomic, retain) NSObject<SgBusesCoreDataUpdateUIAction>* sgBusesCoreDataUpdateUIActionDelegate;
 

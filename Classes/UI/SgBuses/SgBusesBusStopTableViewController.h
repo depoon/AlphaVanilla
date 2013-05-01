@@ -8,7 +8,8 @@
 
 #import <Foundation/Foundation.h>
 #import "SgTableViewUpdatableAction.h"
+#import "EGORefreshTableHeaderView.h"
 
-@interface SgBusesBusStopTableViewController : UITableViewController<SgTableViewUpdatableAction>
+@interface SgBusesBusStopTableViewController : UITableViewController<SgTableViewUpdatableAction, EGORefreshTableHeaderDelegate>
 
 @end

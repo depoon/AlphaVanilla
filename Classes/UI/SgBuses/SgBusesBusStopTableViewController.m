@@ -17,6 +17,9 @@
 @implementation SgBusesBusStopTableViewController{
     @private NSArray* feedComponentArray;
     @private NSOperationQueue* queue;
+    
+    @private EGORefreshTableHeaderView *refreshHeaderView;
+    @private BOOL _reloading;
 }
 
 -(id) init{
@@ -27,6 +30,10 @@
 }
 
 -(void) dealloc{
+    if (refreshHeaderView){
+        [refreshHeaderView release];
+        refreshHeaderView = nil;
+    }
     if (queue){
         [queue cancelAllOperations];
         [queue release];
@@ -39,6 +46,14 @@
     [super dealloc];
 }
 
+-(void) setRefreshHeaderView: (EGORefreshTableHeaderView*) _refreshHeaderView{
+    if (refreshHeaderView){
+        [refreshHeaderView release];
+        refreshHeaderView = nil;
+    }
+    refreshHeaderView = [_refreshHeaderView retain];
+}
+
 -(void) setFeedComponentArray: (NSArray*) _feedComponentArray{
     if (feedComponentArray){
         [feedComponentArray release];
@@ -46,6 +61,8 @@
     }
     feedComponentArray = [_feedComponentArray retain];
 }
+
+
 
 -(UIColor*) generateLightBlueColor{
     return [UIColor colorWithRed:51.0/255.0 green:204.0/255.0 blue:255.0/255.0 alpha:1];
@@ -91,6 +108,15 @@
     [self.tableView setSeparatorColor:[UIColor blackColor]];
     
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemEdit target:self action:@selector(editBusesList)];
+    
+  //  [self initWithFrame:frame arrowImageName:@"blueArrow.png" textColor:TEXT_COLOR]
+    CGRect refreshFrame = CGRectMake(0.0f, 0.0f - self.tableView.bounds.size.height, self.view.frame.size.width, self.tableView.bounds.size.height);
+    EGORefreshTableHeaderView *_refreshHeaderView = [[EGORefreshTableHeaderView alloc] initWithFrame:refreshFrame arrowImageName:@"whiteArrow.png" textColor:[UIColor whiteColor]];
+    _refreshHeaderView.backgroundColor = [self.view backgroundColor];
+    _refreshHeaderView.delegate = self;
+    [self.tableView addSubview:_refreshHeaderView];
+    [self setRefreshHeaderView:_refreshHeaderView];
+    [_refreshHeaderView release];
 }
 
 -(void) viewDidAppear:(BOOL)animated{
@@ -227,7 +253,59 @@
 }
 
 -(void) updateTable{
-[self.tableView performSelectorOnMainThread:@selector(reloadData) withObject:nil waitUntilDone:NO];
+    [self.tableView performSelectorOnMainThread:@selector(reloadData) withObject:nil waitUntilDone:NO];
     //[self.tableView performSelectorInBackground:@selector(reloadData) withObject:nil];
 }
+
+- (void)egoRefreshTableHeaderDidTriggerRefresh:(EGORefreshTableHeaderView*)view{
+    
+    [self reloadTableViewDataSource];
+    for (SgBusesShortListBusStopFeedComponent* feedComponent in feedComponentArray){
+        [feedComponent clearTiming];
+    }
+    
+    [self performSelector:@selector(doneLoadingTableViewData) withObject:nil afterDelay:3.0];
+    for (SgBusesShortListBusStopFeedComponent* feedComponent in feedComponentArray){
+        [feedComponent updateTiming];
+    }
+
+
+
+    
+}
+
+- (BOOL)egoRefreshTableHeaderDataSourceIsLoading:(EGORefreshTableHeaderView*)view{
+    
+    return _reloading; // should return if data source model is reloading
+    
+}
+
+- (void)reloadTableViewDataSource{
+    
+    // should be calling your tableviews data source model to reload
+    // put here just for demo
+    _reloading = YES;
+    
+}
+
+- (void)doneLoadingTableViewData{
+    
+    // model should call this when its done loading
+    _reloading = NO;
+    [refreshHeaderView egoRefreshScrollViewDataSourceDidFinishedLoading:self.tableView];
+    
+}
+
+- (void)scrollViewDidScroll:(UIScrollView *)scrollView{
+    
+    [refreshHeaderView egoRefreshScrollViewDidScroll:scrollView];
+    
+}
+
+- (void)scrollViewDidEndDragging:(UIScrollView *)scrollView willDecelerate:(BOOL)decelerate{
+    
+    [refreshHeaderView egoRefreshScrollViewDidEndDragging:scrollView];
+    
+}
+
 @end

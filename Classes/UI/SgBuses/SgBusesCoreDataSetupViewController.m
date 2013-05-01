@@ -16,6 +16,9 @@
     @private UILabel* progressLabel;
     @private SgBusesCoreDataSetup* sgBusesCoreDataSetup;
     @private UIButton* startAppButton;
+    @private UIButton* resetAppButton;
+    @private BOOL isLaunchedDuringStartUp;
+    
 }
 
 -(id) init{
@@ -39,12 +42,25 @@
     [startAppButton.titleLabel setFont:[UIFont boldSystemFontOfSize:20]];
     [startAppButton addTarget:self  action:@selector(startApplication) forControlEvents:UIControlEventTouchUpInside];
 
+    resetAppButton = [[UIButton alloc]initWithFrame:CGRectZero];
+    resetAppButton.layer.cornerRadius = 5; // this value vary as per your desire
+    resetAppButton.clipsToBounds = YES;
+    [resetAppButton setBackgroundColor:[UIColor darkGrayColor]];
+    [resetAppButton setTintColor:[UIColor colorWithRed:0.764 green:1.000 blue:0.000 alpha:1.000]];
+    [resetAppButton setTitle:@"Reset Data" forState:UIControlStateNormal];
+    [resetAppButton.titleLabel setFont:[UIFont boldSystemFontOfSize:20]];
+    [resetAppButton addTarget:self  action:@selector(performReset) forControlEvents:UIControlEventTouchUpInside];
 
-
+    isLaunchedDuringStartUp = NO;
+    
     return self;
 }
 
 -(void) dealloc{
+    if (resetAppButton){
+        [resetAppButton release];
+        resetAppButton = nil;
+    }
     if (startAppButton){
         [startAppButton release];
         startAppButton = nil;
@@ -64,15 +80,24 @@
     [super dealloc];
 }
 
+-(void) setIsLaunchedDuringStartup: (BOOL) _isLaunchedDuringStartUp{
+    isLaunchedDuringStartUp = _isLaunchedDuringStartUp;
+}
+
 -(void) viewDidLoad{
     [super viewDidLoad];
+    self.title = @"Setup SG Buses";
     [self.view setBackgroundColor:[UIColor colorWithRed:50.0/255.0 green:50.0/255.0 blue:50.0/255.0 alpha:1]];
     [self.view addSubview:progressView];
     [self.view addSubview:progressLabel];
     
     [startAppButton setFrame:CGRectMake(20, 350, 280, 30)];
+    
+    [resetAppButton setFrame:CGRectMake(20, 350, 280, 30)];
     [self.view addSubview:startAppButton];
+    [self.view addSubview:resetAppButton];
     [startAppButton setHidden:YES];
+    [resetAppButton setHidden:YES];
     
     
     
@@ -99,12 +124,29 @@
 -(void) viewDidAppear:(BOOL)animated{
     [super viewDidAppear:animated];
     [NSThread sleepForTimeInterval:1];
+    BOOL shouldResetupCoreData = [sgBusesCoreDataSetup shouldResetupCoreData];
+    if (shouldResetupCoreData){
+        [sgBusesCoreDataSetup setupCoreData];
+        return;
+    }
+    [resetAppButton setHidden:NO];
+}
+
+-(void) performReset{
+    [resetAppButton setHidden:YES];
+    [sgBusesCoreDataSetup deleteAllBusData];
     [sgBusesCoreDataSetup setupCoreData];
 }
 
+
 -(void) startApplication{
-    NSObject<ApplicationDelegateAction>* appDelegate = (NSObject<ApplicationDelegateAction>*) [[UIApplication sharedApplication] delegate];
-    [appDelegate beginApp];
+    if (isLaunchedDuringStartUp){
+        NSObject<ApplicationDelegateAction>* appDelegate = (NSObject<ApplicationDelegateAction>*) [[UIApplication sharedApplication] delegate];
+        [appDelegate beginApp];
+        return;
+    }
+    
+    [self.navigationController popViewControllerAnimated:YES];
     
 }
 @end

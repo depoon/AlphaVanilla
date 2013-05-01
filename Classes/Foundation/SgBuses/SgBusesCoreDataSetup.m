@@ -59,6 +59,8 @@ NSString* const CoreDataModule = @"SgBuses";
     return currentProgressValue;
 }
 
+
+
 -(void) setupCoreData{
     
     NSMutableDictionary* uniqueBusNumberDictionary = [NSMutableDictionary dictionary];
@@ -71,7 +73,9 @@ NSString* const CoreDataModule = @"SgBuses";
     
     float progressValueOutOf100 = 0;
     
+
     if ([self shouldResetupCoreData]){
+
         NSLog(@"Nothing here");
 
         NSDictionary* busStopsJson = [fileContentsReader getJsonDictionaryValueFromFile:@"bus-stops.json"];
@@ -153,7 +157,6 @@ NSString* const CoreDataModule = @"SgBuses";
 
         
     }
-    
 }
 
 
@@ -181,5 +184,10 @@ NSString* const CoreDataModule = @"SgBuses";
         
         
     }
+}
+
+-(void) deleteAllBusData{
+    SgBusesCoreDataManager* sgBusesCoreDataManager = [self generateSgBusesCoreDataManager];
+    [sgBusesCoreDataManager deleteAllDataViaCascade];
 }
 @end

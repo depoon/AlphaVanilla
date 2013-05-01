@@ -5,5 +5,6 @@
 #define __POD_ASIHTTPRequest_ASIWebPageRequest
 #define __POD_ASIHTTPRequest_CloudFiles
 #define __POD_ASIHTTPRequest_S3
+#define __POD_EGOTableViewPullRefresh
 #define __POD_JSONKit
 #define __POD_Reachability

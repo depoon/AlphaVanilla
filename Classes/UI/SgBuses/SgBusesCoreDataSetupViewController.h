@@ -11,4 +11,5 @@
 
 @interface SgBusesCoreDataSetupViewController : UIViewController<SgBusesCoreDataUpdateUIAction>
 
+-(void) setIsLaunchedDuringStartup: (BOOL) _isLaunchedDuringStartUp;
 @end

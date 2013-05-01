@@ -12,6 +12,12 @@
 		C72831CB16F31CD1004278D4 /* ConfigurationSetup.m in Sources */ = {isa = PBXBuildFile; fileRef = C72831CA16F31CD1004278D4 /* ConfigurationSetup.m */; };
 		C72831CE16F31D0F004278D4 /* ApplicationConfigurationSetup.m in Sources */ = {isa = PBXBuildFile; fileRef = C72831CD16F31D0F004278D4 /* ApplicationConfigurationSetup.m */; };
 		C72831D116F31EFA004278D4 /* Configuration.m in Sources */ = {isa = PBXBuildFile; fileRef = C72831D016F31EFA004278D4 /* Configuration.m */; };
+		C73AA987173167D00056AA14 /* SgBusesBusButton320.png in Resources */ = {isa = PBXBuildFile; fileRef = C73AA985173167D00056AA14 /* SgBusesBusButton320.png */; };
+		C73AA988173167D00056AA14 /* SgBusesBusButton320@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C73AA986173167D00056AA14 /* SgBusesBusButton320@2x.png */; };
+		C73AA98B173169D90056AA14 /* SgBusesBusStop.png in Resources */ = {isa = PBXBuildFile; fileRef = C73AA989173169D90056AA14 /* SgBusesBusStop.png */; };
+		C73AA98C173169D90056AA14 /* SgBusesBusStop@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C73AA98A173169D90056AA14 /* SgBusesBusStop@2x.png */; };
+		C73AA98F17316CFB0056AA14 /* SgBusesReset.png in Resources */ = {isa = PBXBuildFile; fileRef = C73AA98D17316CFB0056AA14 /* SgBusesReset.png */; };
+		C73AA99017316CFB0056AA14 /* SgBusesReset@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C73AA98E17316CFB0056AA14 /* SgBusesReset@2x.png */; };
 		C7401C2716F3123300EAADEB /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C7401C2616F3123300EAADEB /* UIKit.framework */; };
 		C7401C2916F3123300EAADEB /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C7401C2816F3123300EAADEB /* Foundation.framework */; };
 		C7401C2B16F3123300EAADEB /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C7401C2A16F3123300EAADEB /* CoreGraphics.framework */; };
@@ -390,6 +396,12 @@
 		C72831CD16F31D0F004278D4 /* ApplicationConfigurationSetup.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ApplicationConfigurationSetup.m; path = Classes/Config/ApplicationConfiguration/ApplicationConfigurationSetup.m; sourceTree = SOURCE_ROOT; };
 		C72831CF16F31EFA004278D4 /* Configuration.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Configuration.h; path = Classes/Config/Configuration.h; sourceTree = SOURCE_ROOT; };
 		C72831D016F31EFA004278D4 /* Configuration.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Configuration.m; path = Classes/Config/Configuration.m; sourceTree = SOURCE_ROOT; };
+		C73AA985173167D00056AA14 /* SgBusesBusButton320.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = SgBusesBusButton320.png; path = Resources/Images/SgBuses/SgBusesBusButton320.png; sourceTree = SOURCE_ROOT; };
+		C73AA986173167D00056AA14 /* SgBusesBusButton320@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "SgBusesBusButton320@2x.png"; path = "Resources/Images/SgBuses/SgBusesBusButton320@2x.png"; sourceTree = SOURCE_ROOT; };
+		C73AA989173169D90056AA14 /* SgBusesBusStop.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = SgBusesBusStop.png; path = Resources/Images/SgBuses/SgBusesBusStop.png; sourceTree = SOURCE_ROOT; };
+		C73AA98A173169D90056AA14 /* SgBusesBusStop@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "SgBusesBusStop@2x.png"; path = "Resources/Images/SgBuses/SgBusesBusStop@2x.png"; sourceTree = SOURCE_ROOT; };
+		C73AA98D17316CFB0056AA14 /* SgBusesReset.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = SgBusesReset.png; path = Resources/Images/SgBuses/SgBusesReset.png; sourceTree = SOURCE_ROOT; };
+		C73AA98E17316CFB0056AA14 /* SgBusesReset@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "SgBusesReset@2x.png"; path = "Resources/Images/SgBuses/SgBusesReset@2x.png"; sourceTree = SOURCE_ROOT; };
 		C7401C2216F3123300EAADEB /* Freestyle.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Freestyle.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C7401C2616F3123300EAADEB /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		C7401C2816F3123300EAADEB /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -1095,6 +1107,12 @@
 		C74E0F5E17130C6E00ED57FA /* SgBuses */ = {
 			isa = PBXGroup;
 			children = (
+				C73AA98D17316CFB0056AA14 /* SgBusesReset.png */,
+				C73AA98E17316CFB0056AA14 /* SgBusesReset@2x.png */,
+				C73AA989173169D90056AA14 /* SgBusesBusStop.png */,
+				C73AA98A173169D90056AA14 /* SgBusesBusStop@2x.png */,
+				C73AA985173167D00056AA14 /* SgBusesBusButton320.png */,
+				C73AA986173167D00056AA14 /* SgBusesBusButton320@2x.png */,
 				C74E0F5F17130C7C00ED57FA /* SgBusesBusButton.png */,
 				C74E0F6017130C7C00ED57FA /* SgBusesBusButton@2x.png */,
 			);
@@ -1968,6 +1986,12 @@
 				C7C841DB1711D6460061B9AA /* RWS8.json in Resources */,
 				C74E0F6117130C7C00ED57FA /* SgBusesBusButton.png in Resources */,
 				C74E0F6217130C7C00ED57FA /* SgBusesBusButton@2x.png in Resources */,
+				C73AA987173167D00056AA14 /* SgBusesBusButton320.png in Resources */,
+				C73AA988173167D00056AA14 /* SgBusesBusButton320@2x.png in Resources */,
+				C73AA98B173169D90056AA14 /* SgBusesBusStop.png in Resources */,
+				C73AA98C173169D90056AA14 /* SgBusesBusStop@2x.png in Resources */,
+				C73AA98F17316CFB0056AA14 /* SgBusesReset.png in Resources */,
+				C73AA99017316CFB0056AA14 /* SgBusesReset@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

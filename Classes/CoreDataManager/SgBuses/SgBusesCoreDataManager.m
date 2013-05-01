@@ -291,4 +291,13 @@
     return error;
 }
 
+-(void) deleteAllDataViaCascade{
+    NSArray* busNumbersArray = [self getAllBusNumbers];
+    for (NSManagedObject* managedObject in busNumbersArray){
+        [managedObjectContext deleteObject:managedObject];
+    }
+    NSError* error = nil;
+    [managedObjectContext save:&error];
+}
+
 @end
